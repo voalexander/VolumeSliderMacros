@@ -6,13 +6,16 @@ const int NUM_SLIDERS = 4;
 const int analogInputs[NUM_SLIDERS] = {A0, A1, A2, A3};
 int analogSliderVals[NUM_SLIDERS];
 
+const char ctrlKey = KEY_LEFT_CTRL;
+const char altKey = KEY_LEFT_ALT;
+
 const byte ROWS = 3;
 const byte COLS = 4;
 
 char keys[ROWS][COLS] = {
-  {'1', '2', '3', '4'},
-  {'5', '6', '7', '8'},
-  {'9', '#', '!', '@'}
+  {'[', '1', '2', '3'},
+  {']', '4', '5', '6'},
+  {'0', '7', '8', '9'}
 };
 
 byte rowPins[ROWS] = {8, 7, 6};
@@ -36,13 +39,14 @@ void loop()
   updateSliderValues();
   sendSliderValues();
   delay(10);
-  /*
   char key = kpd.getKey();
   if (key != NO_KEY)
   {
+    Keyboard.press(ctrlKey);
+    Keyboard.press(altKey);
     Keyboard.print(key);
+    Keyboard.releaseAll();
   }
-  */
 }
 
 void updateSliderValues()
