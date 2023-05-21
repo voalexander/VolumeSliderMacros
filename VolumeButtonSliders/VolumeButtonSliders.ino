@@ -13,9 +13,9 @@ const byte ROWS = 3;
 const byte COLS = 4;
 
 char keys[ROWS][COLS] = {
-  {'[', '1', '2', '3'},
+  {'[', '7', '8', '9'},
   {']', '4', '5', '6'},
-  {'0', '7', '8', '9'}
+  {'0', '1', '2', '3'}
 };
 
 byte rowPins[ROWS] = {8, 7, 6};
@@ -40,6 +40,8 @@ void loop()
   sendSliderValues();
   delay(10);
   char key = kpd.getKey();
+  // Note: Ctrl + Alt + Key you pressed
+  // It's the windows default launch shortcut
   if (key != NO_KEY)
   {
     Keyboard.press(ctrlKey);
